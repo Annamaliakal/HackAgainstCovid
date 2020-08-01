@@ -22,12 +22,35 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#">Login</a></li>
-            <li class="active"><a href="#">Sign Up</a></li>
+
+            {% if session.patient %}
+            <li><a href="/plogout">Logout</a></li>
+            <li><a href="/history">History</a></li>
+            <li><a href="/bookAppointment">Book Appointment</a></li>
+            <li><a href="/viewAppointment">View Appointments</a></li>
+            {% else %}
+            <li><a href="/plogin">Login</a></li>
+            <li class="active"><a href="psignup">Sign Up</a></li>
+            {% endif %}
+
+            <!-- {% if session.doctor %}
+            <li><a href="/dlogout">Logout</a></li>
+            <li><a href="/history">History</a></li>
+            <li><a href="/bookAppointment">Book Appointment</a></li>
+            <li><a href="/viewAppointment">View Appointments</a></li>
+            {% else %}
+            <li><a href="/dlogin">Login</a></li>
+            <li class="active"><a href="dsignup">Sign Up</a></li>
+            {% endif %} -->
+
+
           </ul>
         </div>
       </div>
     </nav>
+
+    {% include "includes/_message.html" %}
+
     {%block body%}{%endblock%}
     </body>
     </html>
