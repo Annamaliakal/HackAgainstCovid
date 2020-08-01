@@ -1,4 +1,6 @@
+
 from flask import Flask, render_template, request, redirect, url_for, flash, session
+
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -42,12 +44,16 @@ class Appointment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     doc_name = db.Column(db.String(50))
     patient_name = db.Column(db.String(50))
+
     desc = db.Column(db.String(50))
     dept = db.Column(db.String(15))
     date = db.Column(db.Integer)
     time = db.Column(db.Integer)
     status = db.Column(db.String(15), default='Pending')
     created_by_patient = db.Column(db.Integer, db.ForeignKey('patient.id'))
+
+    #created_by_doc = db.Column(db.Integer, db.ForeignKey('doctor.id'))
+
 
 class Prescription(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -59,6 +65,7 @@ class Prescription(db.Model):
     created_by_patient = db.Column(db.Integer, db.ForeignKey('patient.id'))
     created_by_doc = db.Column(db.Integer, db.ForeignKey('doctor.id'))
 
+
 ## Routes
     
 @app.route('/')
@@ -67,15 +74,19 @@ def index():
 
 ## Signup/ Login
 
+
 @app.route('/dsignup',methods=['GET','POST']) #only POST required i guess
 def dsignup():
     if request.method == 'POST':
         name = request.form['dname']
         pwd = request.form['pwd']
+
         cnf_pwd = request.form['cnf_pwd']
+
         dept = request.form['dept']
         qual = request.form['qual']
         ob = Doctor(name=name,password=pwd,dept=dept,qual=qual)
+
 
         if pwd == cnf_pwd:
             db.session.add(ob)
@@ -94,11 +105,14 @@ def psignup():
     if request.method == 'POST':
         name = request.form['pname']
         pwd = request.form['pwd']
+
         cnf_pwd = request.form['cnf_pwd']
+
         bg = request.form['bg']
         gender = request.form['gender']
         no = request.form['no']
         ob = Patient(name=name,password=pwd,blood_grp=bg,gender=gender,contact=no)
+
 
         if pwd == cnf_pwd:
             db.session.add(ob)
@@ -203,6 +217,8 @@ def appointment():
 
 
 
+
+
 @app.route('/history',methods=['GET','POST']) #ADD history
 def history():
     if request.method == 'POST':
@@ -219,14 +235,15 @@ def history():
 
         hist_ob = History(desc=desc,allergy=allergy)
         db.session.add(hist_ob)
+
         db.session.commit() 
+        #return render_template('history.html')
         
-## 
 
 @app.route('/pindex')
 def pindex():
     return render_template('pindex.html')
-
+  
 if __name__ == "__main__":
     db.create_all()
     app.run(debug=True)

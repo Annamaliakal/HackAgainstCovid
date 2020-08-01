@@ -1,5 +1,6 @@
 {%extends 'base.html' %}
 {%block body%}
+
 {% with message = get_flashed_messages() %}
   {% if message %}
   {% for message in messages %}
@@ -16,6 +17,7 @@
 }); -->
 
 
+
 <div class="container theme-showcase col-sm-6 col-sm-offset-3" role="main">
 
     <div class="row">
@@ -24,7 +26,9 @@
         <div class="panel panel-primary">
 
           <div class="panel-heading">
+
             <h3 class="panel-title">Patient Signup</h3>
+
           </div>
 
           <div class="panel-body">
@@ -33,6 +37,7 @@
               <div class="form-group">
             <div class="form-group">
                 <label for="pname">Patient Name</label>
+
                 <input type="text" class="form-control" id="pname" name="pname"placeholder="" required>
               </div>
               
@@ -57,6 +62,7 @@
               <div class="form-group">
                 <label for="no">Phone No</label>
                 <input type="tel" class="form-control" id="no" name="no" placeholder="" required>
+
               </div>
               
               <button type="submit" class="btn btn-primary">SignUp</button>
