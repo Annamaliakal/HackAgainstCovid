@@ -134,7 +134,7 @@ def dlogin():
             flash('Login succesful!', 'success')
             print(doc.id)
             session['doctor'] = doc.id
-            return render_template('dindex.html')
+            return redirect(url_for('dindex'))
         else:
             flash('Invalid credentials', 'danger')
             return render_template('dlogin.html')
@@ -158,17 +158,17 @@ def dindex():
      return render_template('dindex.html',appointments=appointments)
 
 @app.route('/Confirm')
-def confirm():
+def Confirm():
     id=request.args['id']
-    confirmed_appointments=Appoimtment.query.filter_by(id=id).first()
+    confirmed_appointments=Appointment.query.filter_by(id=id).first()
     confirmed_appointments.status='Confirmed'
     db.session.commit()
     return redirect(url_for('dindex'))
 
 @app.route('/Deny')
-def deny():
+def Deny():
     id=request.args['id']
-    denied_appointments=Appoimtment.query.filter_by(id=id).first()
+    denied_appointments=Appointment.query.filter_by(id=id).first()
     denied_appointments.status='Denied'
     db.session.commit()
     return redirect(url_for('dindex'))
@@ -264,9 +264,22 @@ def history():
 
         db.session.commit() 
         #return render_template('history.html')
+
+@app.route('/prescription',methods=['POST','GET'])
+def prescriptions():
+    if request.method=="POST":
+        #doc_id=session['user']
+        #doc_name=Doctor.query.get(doc_id).name
+        patient_name=request.form['pname']
+        medicines=request.form['med']
+        dosage=request.form['dos']
+        fee=request.form['fee']
+        oj=Prescription(patient_n=patient_name,med=medicines,dosage=dosage,fee=fee)
+        db.session.add(oj)
+        db.session.commit()
         
 
-@app.route('/pindex')
+@app.route('/pindex',methods=['GET','POST'])
 def pindex():
     return render_template('pindex.html')
   

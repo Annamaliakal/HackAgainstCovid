@@ -1,11 +1,14 @@
 {%extends 'base.html' %}
 {%block body%}
 <script>
-    function filter_doc(department){  // Function to get the dept and doc name from the chosen option
-        document.getElementById('doc').value = department[2]  // Slice doc name
-        department=department.slice(7,-2)                     // Slice dept name
+    function filter_doc(department){
+        var d=department.indexOf(',')
+        console.log(d)  // Function to get the dept and doc name from the chosen option
+        document.getElementById('doc').value = department.slice(2,d-1)  // Slice doc name
+        department=department.slice(d+3,-2)                     // Slice dept name
         document.getElementById('dept').value = department;  
     }
+
 </script>
 
 <div class="container theme-showcase col-sm-6 col-sm-offset-3" role="main">
@@ -21,7 +24,7 @@
 
           <div class="panel-body">
 
-            <form method="POST" action="/pindex">
+            <form method="POST" action="">
               <div class="form-group">
 
                 <div class="form-group">
