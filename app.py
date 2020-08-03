@@ -70,7 +70,7 @@ class Prescription(db.Model):
     
 @app.route('/')
 def index():
-    return render_template('base.html')
+    return render_template('homee.html')
 
 ## Signup/ Login
 
@@ -133,7 +133,7 @@ def dlogin():
         if doc:
             flash('Login succesful!', 'success')
             print(doc.id)
-            session['patient'] = doc.id
+            session['doctor'] = doc.id
             return render_template('dindex.html')
         else:
             flash('Invalid credentials', 'danger')

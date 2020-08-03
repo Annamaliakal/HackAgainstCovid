@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>REVIVE</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <style>
+  
+  body{
+   background: #780206;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #061161, #780206);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #061161, #780206); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+  
+  .navbar-brand{
+    font-size:2rem;
+    font-weight: 500;
+    color:white;
+    
+   }
+   .bow{
+    margin-bottom: 80px;
+}
+.login-form-1{
+   padding-top: 2%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    background-color: bisque;
+    height: 300px;
+    width: 20rem;
+    
+  }
+.login-form-1 h3{
+    text-align: center;
+    color: #333;
+    
+}
+.login-form-2{
+   padding-top: 2%;
+    background: #0062cc;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    /* margin-top:10px; */
+    height: 300px;
+}
+.login-form-2 h3{
+    text-align: center;
+    color: #fff;
+
+}
+.form{
+    padding: 10%;
+}
+.btnSubmit
+{
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+}
+.login-form-1 .btnSubmit{
+    font-weight: 600;
+    color: #fff;
+    background-color: #0062cc;
+}
+.login-form-2 .btnSubmit{
+    font-weight: 600;
+    color: #0062cc;
+    background-color: #fff;
+}
+.login-form-2 .ForgetPwd{
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+}
+.login-form-1 .ForgetPwd{
+    color: #0062cc;
+    font-weight: 600;
+    text-decoration: none;
+}
+.top{
+    margin-top: 30px;
+}
+</style>
+</head>
+<body>
+    <nav class="navbar navbar-fixed-top">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">REVIVE</a>
+      </div>
+    </nav>      
+    <div class="container container-fluid">
+      <div class="row bow">
+          <div class="col-md-2"></div>
+          <div class="col-md-8">
+            <h1 class="display-4 text-light">Get treated at your home </h1>
+          </div>
+          <div class="col-md-2"></div>
+      </div>
+    <div class="row top">
+        <div class="col-md-2"></div>
+        <div class="col-md-3 login-form-1">
+            <h3>USER LOGIN</h3>
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Your Email *" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Your Password *" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btnSubmit" value="Login" />
+                </div>
+                <div class="form-group">
+                    <a href="#" class="ForgetPwd">Sign Up?</a>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-2">
+            
+        </div>
+        <div class="col-md-3 login-form-2">
+            <h3>DOCTOR LOGIN</h3>
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Your Email *" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Your Password *" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btnSubmit" value="Login" />
+                </div>
+                <div class="form-group">
+
+                    <a href="#" class="ForgetPwd" value="Login">Sign Up?</a>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    </div>
+    
+
+</body>
+</html>
