@@ -57,11 +57,12 @@ class Appointment(db.Model):
 
 class Prescription(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    patient_n = db.Column(db.String(50))
+    patient_name = db.Column(db.String(50))
     doc_name = db.Column(db.String(50))
     med = db.Column(db.String(50))
     dosage = db.Column(db.Integer)
     fee = db.Column(db.Integer)
+    direction=db.Column(db.String(100))
     created_by_patient = db.Column(db.Integer, db.ForeignKey('patient.id'))
     created_by_doc = db.Column(db.Integer, db.ForeignKey('doctor.id'))
 
@@ -268,15 +269,22 @@ def history():
 @app.route('/prescription',methods=['POST','GET'])
 def prescriptions():
     if request.method=="POST":
-        #doc_id=session['user']
-        #doc_name=Doctor.query.get(doc_id).name
+        doc_id=session['doctor']
+        print(doc_id)
+        #user_id=request.args.get('id')
+        #print(user_id)
+        doc_name=Doctor.query.get(doc_id).name
         patient_name=request.form['pname']
         medicines=request.form['med']
         dosage=request.form['dos']
         fee=request.form['fee']
-        oj=Prescription(patient_n=patient_name,med=medicines,dosage=dosage,fee=fee)
-        db.session.add(oj)
+        direction=request.form['dir']
+        ob=Prescription(patient_name=patient_name,med=medicines,dosage=dosage,fee=fee,doc_name=doc_name,direction=direction,created_by_doc=doc_id)
+        db.session.add(ob)
         db.session.commit()
+        return redirect(url_for('dindex'))
+    else:
+        return render_template('prescription.html')
         
 
 @app.route('/pindex',methods=['GET','POST'])
