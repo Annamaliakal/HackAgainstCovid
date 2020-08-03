@@ -70,7 +70,7 @@ class Prescription(db.Model):
     
 @app.route('/')
 def index():
-    return render_template('homee.html')
+    return render_template('home.html')
 
 ## Signup/ Login
 
@@ -147,6 +147,32 @@ def dlogin():
 
     else:
         return render_template('dlogin.html')
+
+@app.route('/dindex')
+def dindex():
+     doc_id=session['doctor']
+     docname=Doctor.query.get(doc_id).name
+     print(docname)
+     appointments=Appointment.query.filter_by(doc_name=docname,status='Pending').all()
+     print(appointments)
+     return render_template('dindex.html',appointments=appointments)
+
+@app.route('/Confirm')
+def confirm():
+    id=request.args['id']
+    confirmed_appointments=Appoimtment.query.filter_by(id=id).first()
+    confirmed_appointments.status='Confirmed'
+    db.session.commit()
+    return redirect(url_for('dindex'))
+
+@app.route('/Deny')
+def deny():
+    id=request.args['id']
+    denied_appointments=Appoimtment.query.filter_by(id=id).first()
+    denied_appointments.status='Denied'
+    db.session.commit()
+    return redirect(url_for('dindex'))
+
 
 @app.route('/plogin', methods=['GET', 'POST'])
 def plogin():

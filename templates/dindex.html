@@ -1,4 +1,14 @@
 {% extends 'base.html' %}
 {% block body %}
         <h1>Home Page Doctor</h1>
+        {% for ap in appointments %}
+                <b>{{ ap.patient_name }} booked an appointment<br> 
+                {{ ap.date }}<br> 
+                {{ ap.time }} <br>
+                
+                <button type="button" class="btn btn-success"><a href="{{ url_for('Confirm',id=ap.id) }}">Confirm</a>
+                </button>
+                <button type="button" class="btn btn-success"><a href="{{ url_for('Deny',id=ap.id) }}">Deny</a>
+                </button>
+        {% endfor %}
 {% endblock %}
