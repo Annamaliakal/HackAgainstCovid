@@ -1,0 +1,39 @@
+{% extends 'dbase.html' %}
+{% block body %}
+
+    <div class="container">
+        <form action="" method="post">
+            <div>
+                <label for="pname">Patient Name: </label>
+            <input type="text" id="pname" name="pname">
+            </div>
+            
+            
+            <div>
+                <label for="med">Medicines: </label>
+                <input type="text" id="med" name="med">
+            </div>
+    
+            <div>
+                <label for="dos">Dosage: </label>
+                <input type="text" id="dos" name="dos">
+            </div>
+
+            
+            <div>
+                <label for="fee">Fee: </label>
+                <input type="text" id="fee" name="fee">
+            </div>
+
+            <div>
+                <label for="dir">Directions: </label>
+                <input type="text" id="dir" name="dir">
+            </div>
+        
+            
+    
+            <button type="submit" class="btn btn-primary">Sent!!</button>
+    
+        </form>
+    </div>
+{% endblock %}

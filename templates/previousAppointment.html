@@ -1,0 +1,43 @@
+{% extends 'dbase.html' %}
+{% block body %}
+
+<b><h1 style="text-align: center;">Previous consultations</h1></b>
+<br>
+{% if cnf_appoinments %}
+<table  class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Sl. NO</th>
+            <th scope="col">Patient name</th>
+            <th scope="col">Date</th>
+            <th scope="col">Time</th>
+            <th scope="col">Symptoms</th>
+            <th scope="col">Description</th>
+            <th scope="col">Feedback</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for appointment in cnf_appointments %}
+            <tr>    
+                <td scope="row">{{appointment.id}}</td>
+                <td>{{appointment.patient_name}}</td>
+                <td> {{appointment.date}}</td>
+                <td>{{appointment.time}}</td>
+                <td>{{appointment.symptoms}}</td>
+                <td>{{appointment.desc}}</td>
+                <td>
+                    <button type="button" class="btn btn-light"><a href="{{ url_for('history')}}" style="text-decoration: none;">View</a></button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-light"><a href="{{ url_for('prescriptions')}}" style="text-decoration: none;">View</a></button>
+                </td>
+            </tr>    
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+    <h4>No appointments to show!</h4>
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'dbase.html' %}
+{% block body %}
+        <section>
+                <h1 style='text-align: center;'>Notifications</h1>
+                <br>
+                {% if todayAppointments %}
+                        {% for ap in appointments %}
+                                <hr>
+                                <b>{{ ap.patient_name }} booked an appointment<br> 
+                                {{ ap.date }}<br> 
+                                {{ ap.time }} <br>
+                                
+                                <button type="button" class="btn btn-success"><a href="{{ url_for('Confirm',id=ap.id) }}">Confirm</a>
+                                </button>
+                                <button type="button" class="btn btn-success"><a href="{{ url_for('Deny',id=ap.id) }}">Deny</a>
+                                </button>     
+                        {% endfor %}
+                {% else %}
+                        <h4>No new notifications!</h4>
+                {% endif %}
+        </section>  
+        <hr>    
+        <section>
+                <h1 style="text-align: center;">Appointments for today</h1>
+                <br>
+                {% if todayAppointments %}
+                <table  class="table table-hover">
+                <thead>
+                        <tr>
+                        <th scope="col">Sl. NO</th>
+                        <th scope="col">Patient name</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Symptoms</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Medical History</th>
+                        <th scope="col">Feedback</th>
+                        </tr>
+                </thead>
+                <tbody>
+                        {% for appointment in todayAppointments %}
+                        <tr>    
+                                <td scope="row">{{appointment.id}}</td>
+                                <td>{{appointment.patient_name}}</td>
+                                <td> {{appointment.date}}</td>
+                                <td>{{appointment.time}}</td>
+                                <td>{{appointment.symptoms}}</td>
+                                <td>{{appointment.desc}}</td>
+                                <td>
+                                <button type="button" class="btn btn-light"><a href="{{ url_for('history')}}" style="text-decoration: none;">View</a></button>
+                                </td>
+                                <td>
+                                <button type="button" class="btn btn-light"><a href="{{ url_for('prescriptions')}}" style="text-decoration: none;">Give</a></button>
+                                </td>
+                        </tr>    
+                        {% endfor %}
+                </tbody>
+                </table>
+                {% else %}
+                        <h4>You have no appointments scheduled for today!</h4>
+                {% endif %}
+        </section>
+        
+{% endblock %}
