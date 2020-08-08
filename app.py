@@ -314,7 +314,7 @@ def pbase():
 def UserviewAppointments():
     username =Patient.query.get(session['patient']).name
     print(username)
-    myAppointments = Appointment.query.filter_by(createdby_name=username).all()
+    myAppointments = Appointment.query.filter_by(patient_name=username).all()
     return render_template('viewall_appointment.html', myAppointments=myAppointments)
 
 @app.route('/viewhistory')
