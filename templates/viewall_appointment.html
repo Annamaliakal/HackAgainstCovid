@@ -10,6 +10,7 @@
                            aria-controls="collapse-example"
                            style="text-decoration:none !important; color:#2B32B2 !important; font-size:35px">
                             <i class="fa fa-chevron-down pull-right"></i>
+                            <br><br>
                             &nbsp;&nbsp;&nbsp;&nbsp;All Appointments
                         </a>
                     </h5>
@@ -17,12 +18,12 @@
             
             <thead>
 
-            <th scope="col">No</th>
-            <th scope="col">Doctor Name</th>
-            <th scope="col">Department</th>
-            <th scope="col">Date</th>
-            <th scope="col">Time</th>
-            <th scope="col">Status</th>
+            <th scope="col">&nbsp;&nbsp;&nbsp;&nbsp;No</th>
+            <th scope="col">&nbsp;&nbsp;&nbsp;&nbsp;Doctor Name</th>
+            <th scope="col">&nbsp;&nbsp;&nbsp;&nbsp;Department</th>
+            <th scope="col">&nbsp;&nbsp;&nbsp;&nbsp;Date</th>
+            <th scope="col">&nbsp;&nbsp;&nbsp;&nbsp;Time</th>
+            <th scope="col">&nbsp;&nbsp;&nbsp;&nbsp;Status</th>
 
             </thead>
             <tbody>
@@ -30,12 +31,12 @@
                 {% for i in myAppointments %}
 
 
-                 <th scope="row">p.index }}</th>
-                <td>{{i.doc_name}}</td>
-                <td>{{i.dept}}</td>
-                <td>{{i.date}}</td>
-                <td>{{i.time}}</td>
-                <td>{{i.status}}</td>
+                 <th scope="row">&nbsp;&nbsp;&nbsp;&nbsp;{{loop.index }}</th>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;{{i.doc_name}}</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;{{i.dept}}</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;{{i.date}}</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;{{i.time}}</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;{{i.status}}</td>
 
 
             </tr>
