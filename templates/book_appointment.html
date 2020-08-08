@@ -1,12 +1,14 @@
 {% extends 'pbase.html' %}
 {% block body %}
 <script>
-    function filter_doc(department){  // Function to get the dept and doc name from the chosen option
+function filter_doc(department){  // Function to get the dept and doc name from the chosen option
         var d=department.indexOf(',')
         document.getElementById('doc').value = department.slice(2,d-1)  // Slice doc name
         department=department.slice(d+3,-2)                             // Slice dept name
         document.getElementById('dept').value = department; 
+
     }
+
 </script>
 
 <style>
