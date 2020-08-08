@@ -1,4 +1,12 @@
-body {
+nav {
+    /* padding-top: 70px;
+    padding-bottom: 30px; */
+    background: #780206;  
+    background: -webkit-linear-gradient(to right, #061161, #780206); 
+    background: linear-gradient(to right, #061161, #780206);
+  }
+
+  #info {
     padding-top: 70px;
     padding-bottom: 30px;
   }
@@ -16,3 +24,37 @@ body {
   .theme-showcase .navbar .container {
     width: auto;
   }
+
+  .rightTab{
+    display: inline-block;
+    text-align: left;
+    font-family:Verdana;
+    max-width: 70%;
+    width: 40%;
+    height: 40%;
+    vertical-align: top;
+    margin: auto;
+  }
+
+  .navbar-brand{
+    font-size:2rem;
+    font-weight: 500;
+    color:white;
+    
+   }
+   .bow{
+    margin-bottom: 80px;
+}
+
+.btnSubmit
+{
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+}
+
+.top{
+    margin-top: 30px;
+}

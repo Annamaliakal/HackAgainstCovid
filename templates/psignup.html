@@ -1,34 +1,35 @@
-{%extends 'base.html' %}
-{%block body%}
 
-{% with message = get_flashed_messages() %}
-  {% if message %}
-  {% for message in messages %}
-  <li>{{ message }}</li>
-{% endfor %}
-  {% endif %}
-{% endwith %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- $('#password, #confirm_password').on('keyup', function () {
-  if ($('#password').val() == $('#confirm_password').val()) {
-    $('#message').html('Matching').css('color', 'green');
-  } else 
-    $('#message').html('Not Matching').css('color', 'red');
-}); -->
+    <title>REVIVE</title>
 
+    <link href="{{url_for('static',filename='bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='style.css')}}" rel="stylesheet">
+   
 
-
+  </head>
 <div class="container theme-showcase col-sm-6 col-sm-offset-3" role="main">
-
-    <div class="row">
+  {% with messages = get_flashed_messages(with_categories=true) %}   
+    {% if messages %}
+      <ul class=flashes>
+      {% for category, message in messages %}
+        <div class="alert alert-{{category}}">{{ message }}</div>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+    <div class="row" id='info'>
       <div>
 
         <div class="panel panel-primary">
 
           <div class="panel-heading">
-
             <h3 class="panel-title">Patient Signup</h3>
-
           </div>
 
           <div class="panel-body">
@@ -37,7 +38,6 @@
               <div class="form-group">
             <div class="form-group">
                 <label for="pname">Patient Name</label>
-
                 <input type="text" class="form-control" id="pname" name="pname"placeholder="" required>
               </div>
               
@@ -62,20 +62,14 @@
               <div class="form-group">
                 <label for="no">Phone No</label>
                 <input type="tel" class="form-control" id="no" name="no" placeholder="" required>
-
               </div>
               
               <button type="submit" class="btn btn-primary">SignUp</button>
             </form>
 
-    <div class="page-header"></div>
-
-        
-          </div>
-
+    
         </div>
       </div>
     </div>
 
   </div>
-  {%endblock%}

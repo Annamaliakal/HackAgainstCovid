@@ -1,17 +1,29 @@
-{%extends 'base.html' %}
-{%block body%}
+{% extends 'pbase.html' %}
+{% block body %}
 <script>
-    function filter_doc(department){
+function filter_doc(department){  // Function to get the dept and doc name from the chosen option
         var d=department.indexOf(',')
-        console.log(d)  // Function to get the dept and doc name from the chosen option
         document.getElementById('doc').value = department.slice(2,d-1)  // Slice doc name
-        department=department.slice(d+3,-2)                     // Slice dept name
-        document.getElementById('dept').value = department;  
+        department=department.slice(d+3,-2)                             // Slice dept name
+        document.getElementById('dept').value = department; 
+
     }
 
 </script>
 
-<div class="container theme-showcase col-sm-6 col-sm-offset-3" role="main">
+<style>
+    .rightTab{
+    display: inline-block;
+    text-align: left;
+    max-width: 70%;
+    width: 40%;
+    height: 40%;
+    vertical-align: top;
+    margin: auto;
+  }
+</style>
+
+<div class="container theme-showcase col-sm-6 col-sm-offset-3" id='info' role="main">
 
     <div class="row">
       <div>
@@ -52,12 +64,53 @@
                     </label>
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="desc">Description/Symptoms
                         <input type="text" class="form-control" id="desc" name="desc" placeholder="" required>
                     </label>
+                </div> -->
+
+                <div class="form-group">
+                    <label id="symptomscheck">Which of these symptoms are you experiencing?:</label>
+                    <div class="rightTab">
+                        <ul style="list-style:none;">
+                            <li class="checkboxes">
+                                <label><input name="symptom" value="Headache" type="checkbox" > Headache</label>
+                            </li>
+                            <li class="checkboxes">
+                                <label><input name="symptom" value="Fever" type="checkbox" > Fever</label>
+                            </li>
+                            <li class="checkboxes">
+                                <label><input name="symptom" value="Fatigue" type="checkbox" > Fatigue</label>
+                            </li>
+                            <li class="checkboxes">
+                                <label><input name="symptom" value="Cough" type="checkbox" > Cough</label>
+                            </li>
+                            <li class="checkboxes">
+                                <label><input name="symptom" value="Chest Pain" type="checkbox" > Chest Pain</label>
+                            </li>
+                            <li class="checkboxes">
+                                <label><input name="symptom" value="Dizziness" type="checkbox" > Dizziness</label>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 
+                <div class="form-group">
+                    <label>If other(s), please specify:</label>
+                    <div class="rightTab">
+                        <input class="input-field" type="text" name="other symptoms" size="25">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Please give a short description of your illness:</label><br>
+                    <div class="rightTab">
+                        <textarea name="desc" rows="10" cols="30" placeholder="Describe your symptoms"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group"></div>
                 <div class="form-group">
                     <label for="date">Enter date
                         <input type="date" class="form-control" id="date" name="date" placeholder="" required>
@@ -69,11 +122,12 @@
                         <input type="time" class="form-control" id="time" name="time" placeholder="" required>
                     </label>
                 </div>
-              
+            
               
               <button type="submit" class="btn btn-primary">Book</button>
+            </div>
             </form>
-
+            </div>
         </div>
       </div>
     </div>

@@ -1,0 +1,90 @@
+/* .nav {
+    background: #780206;  
+    background: -webkit-linear-gradient(to right, #061161, #780206); 
+    background: linear-gradient(to right, #061161, #780206);
+ } */
+
+ /* nav {
+    background: #780206;  
+    background: -webkit-linear-gradient(to right, #061161, #780206); 
+    background: linear-gradient(to right, #061161, #780206);
+ } */
+
+ body {
+    background: #780206;  
+    background: -webkit-linear-gradient(to right, #061161, #780206); 
+    background: linear-gradient(to right, #061161, #780206);
+ }
+ #info {
+    padding-top: 70px;
+    padding-bottom: 30px;
+  }
+
+   .navbar-brand{
+     font-size:2rem;
+     font-weight: 500;
+     color:white;
+     
+    }
+    .bow{
+     margin-bottom: 80px;
+ }
+ .login-form-1{
+    padding-top: 2%;
+     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+     background-color: bisque;
+     height: 300px;
+     width: 20rem;
+     
+   }
+ .login-form-1 h3{
+     text-align: center;
+     color: #333;
+     
+ }
+ .login-form-2{
+    padding-top: 2%;
+     background: #0062cc;
+     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+     /* margin-top:10px; */
+     height: 300px;
+ }
+ .login-form-2 h3{
+     text-align: center;
+     color: #fff;
+ 
+ }
+ .form{
+     padding: 10%;
+ }
+ .btnSubmit
+ {
+     width: 50%;
+     border-radius: 1rem;
+     padding: 1.5%;
+     border: none;
+     cursor: pointer;
+ }
+ .login-form-1 .btnSubmit{
+     font-weight: 600;
+     color: #fff;
+     background-color: #0062cc;
+ }
+ .login-form-2 .btnSubmit{
+     font-weight: 600;
+     color: #0062cc;
+     background-color: #fff;
+ }
+ .login-form-2 .ForgetPwd{
+     color: #fff;
+     font-weight: 600;
+     text-decoration: none;
+ }
+ .login-form-1 .ForgetPwd{
+     color: #0062cc;
+     font-weight: 600;
+     text-decoration: none;
+ }
+ .top{
+     margin-top: 30px;
+ }
