@@ -77,7 +77,7 @@ def index():
             patient = Patient.query.filter_by(name=name, password=pwd).first()
             
             if patient:
-                flash('Login succesful!', 'success')
+                flash('Login successful!', 'success')
                 print(patient.id)
                 session['patient'] = patient.id
                 return redirect(url_for('pindex'))
@@ -90,7 +90,7 @@ def index():
             doc = Doctor.query.filter_by(name=name, password=pwd).first()
 
             if doc:
-                flash('Login succesful!', 'success')
+                flash('Login successful!', 'success')
                 print(doc.id)
                 session['doctor'] = doc.id
                 return redirect(url_for('dindex'))
@@ -137,7 +137,7 @@ def psignup():
             db.session.commit()
             return redirect(url_for('index'))
         else:
-            flash("Passwords do not match! Please enter same password")
+            flash("Passwords do not match! Please enter same password",'danger')
             return render_template('psignup.html')
     return render_template('psignup.html')
 
@@ -265,7 +265,7 @@ def dindex():
     appointments=Appointment.query.filter_by(doc_name=docname,status='Pending').all()
     print(appointments)
     today = date.today()
-    todayAppointments = Appointment.query.filter_by(date=today).all()
+    todayAppointments = Appointment.query.filter_by(date=today, status='Confirmed').all()
     return render_template('dindex.html',appointments=appointments, todayAppointments=todayAppointments)
 
 @app.route('/Confirm')
@@ -299,6 +299,7 @@ def prescriptions():
         fee=request.form['fee']
         direction=request.form['dir']
         ob=Prescription(patient_name=patient_name,med=medicines,dosage=dosage,fee=fee,doc_name=doc_name,direction=direction,created_by_patient=cid,created_by_doc=doc_id)
+        Appointment.query.filter_by(created_by_patient=cid).status = 'Completed'
         db.session.add(ob)
         db.session.commit()
         return redirect(url_for('dindex'))
@@ -324,6 +325,13 @@ def viewhistory():
     diseases = History.query.filter_by(created_by=id).all()
     medicines = Medication.query.filter_by(created_by=id).all()
     return render_template('viewhistory.html', diseases=diseases, medicines=medicines)
+
+@app.route('/docViewHistory')
+def docViewHistory():
+    patient_id = request.args['id']
+    diseases = History.query.filter_by(created_by=patient_id).all()
+    medicines = Medication.query.filter_by(created_by=patient_id).all()
+    return render_template('docViewHistory.html', diseases=diseases, medicines=medicines)
 
 if __name__ == "__main__":
     db.create_all()
