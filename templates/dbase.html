@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>REVIVE</title>
+
+    <link href="{{url_for('static',filename='bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='theme.css')}}" rel="stylesheet">
+
+    <style>
+      body {
+        background: url('https://www.xmple.com/wallpaper/linear-white-gradient-highlight-pink-1920x1080-c2-ffffff-ffb6c1-l-50-a-30-f-21.svg');
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    </style>
+
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">REVIVE</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/dlogout">Logout</a></li>
+             <li><a href="/dindex">Index</a></li>
+            <li><a href="/upcomingAppointment">Upcoming Appointments</a></li>
+            <li><a href="/previousAppointment">Previous Appointments</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <section id='info'>
+    {% include "includes/_message.html" %}
+    {%block body%}{%endblock%}
+  </section>
+  </body>
+</html>
