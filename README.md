@@ -1,2 +1,2 @@
-# Hackthehourglass
-Hackathon 2020
+# Revive
+
